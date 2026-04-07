@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #010101;
+  --color-primary-gradient-from: #FA93FA;
+  --color-primary-gradient-via: #C967E8;
+  --color-primary-gradient-to: #983AD6;
+
+  --animate-iridescent: iridescent 8s linear infinite;
+  --animate-iridescent-smooth: iridescentSmooth 6s linear infinite;
+
+  @keyframes iridescent {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
+
+  @keyframes iridescentSmooth {
+    from { background-position: 0% 50%; }
+    to { background-position: 200% 50%; }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white antialiased selection:bg-purple-500/30;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-br from-white via-white to-[#C967E8];
+}
+
+.text-iridescent {
+  @apply bg-clip-text text-transparent bg-[linear-gradient(110deg,#fff,45%,#FA93FA,55%,#fff)] bg-[length:200%_100%] animate-iridescent;
+}
+
+.text-iridescent-cool {
+  @apply bg-clip-text text-transparent bg-[linear-gradient(90deg,#FFFFFF_0%,#3B82F6_50%,#FFFFFF_100%)] bg-[length:200%_100%] animate-iridescent-smooth;
+}
+
+.bg-iridescent {
+  @apply bg-[linear-gradient(110deg,#FA93FA,#5DE0E6,#C967E8,#FA93FA)] bg-[length:200%_100%] animate-iridescent;
+}
+
+.primary-gradient {
+  @apply bg-linear-to-br from-[#FA93FA] via-[#C967E8] to-[#983AD6];
+}
+
+.glass-border {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
